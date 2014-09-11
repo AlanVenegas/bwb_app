@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<% if signed_in? %>
+	Navega a...
+	<%= link_to "Mi Perfil", current_user %>
+	<%= link_to "Desconectar", signout_path, method: "delete" %>
+	<% else %>
+	Navega a...
+	<%= link_to "Acceder", signin_path %>
+	<% end %>
 	<title><%=yield(:title)%></title>
 	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -11,6 +19,9 @@
 
 </head>
 <body>
+	<% flash.each do |key, value| %>
+	<div class="alert alert-<%= key %>"><%= value %></div>
+	<% end %>
 
 	<%= yield %>
 	<%= debug(params) if Rails.env.development? %>
