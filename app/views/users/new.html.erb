@@ -1,2 +1,21 @@
+<% provide(:title, 'Registro') %>
+
 <h1>Nuevo usuario</h1>
 <p>Regístrate aquí en nuestra comunidad</p>
+<%= form_for(@user) do |f| %>
+<%= render 'shared/error_messages' %>
+
+<%= f.label :name, "Nombre" %>
+<%= f.text_field :name %>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
+
+<%= f.label :password %>
+<%= f.password_field :password %>
+
+<%= f.label :password_confirmation, "Confirmation" %>
+<%= f.password_field :password_confirmation %>
+
+<%= f.submit "Crear cuenta"%>
+<% end %>
