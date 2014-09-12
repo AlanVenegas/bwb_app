@@ -32,10 +32,11 @@ describe "Authentication" do
 			before { sign_in user }
 
 			it { should have_title(user.name) }
-			it { should have_link("Mi Perfil",     href: user_path(user)) }
-			it { should have_link("Editar Perfil",     href: edit_user_path(user)) }
+			it { should have_link("Usuarios", 			href: users_path) }
+			it { should have_link("Mi Perfil",     	href: user_path(user)) }
+			it { should have_link("Editar Perfil",  href: edit_user_path(user)) }
 			it { should have_link("Desconectar",    href: signout_path) }
-			it { should_not have_link('Acceder', href: signin_path) }
+			it { should_not have_link('Acceder',	  href: signin_path) }
 
 			describe "followed by signout" do
 				before { click_link "Desconectar" }
@@ -49,21 +50,21 @@ describe "Authentication" do
 		describe "for non-signed-in users" do
 			let(:user) { FactoryGirl.create(:user) }
 
-      describe "when attempting to visit a protected page" do
-        before do
-          visit edit_user_path(user)
-          fill_in "Email",    with: user.email
-          fill_in "Password", with: user.password
-          click_button "Acceder"
-        end
+			describe "when attempting to visit a protected page" do
+				before do
+					visit edit_user_path(user)
+					fill_in "Email",    with: user.email
+					fill_in "Password", with: user.password
+					click_button "Acceder"
+				end
 
-        describe "after signing in" do
+				describe "after signing in" do
 
-          it "should render the desired protected page" do
-            expect(page).to have_title('Editar perfil')
-          end
-        end
-      end
+					it "should render the desired protected page" do
+						expect(page).to have_title('Editar perfil')
+					end
+				end
+			end
 
 			describe "in the Users controller" do
 
@@ -75,6 +76,11 @@ describe "Authentication" do
 				describe "submitting to the update action" do
 					before { patch user_path(user) }
 					specify { expect(response).to redirect_to(signin_path) }
+				end
+
+				describe "visiting the user index" do
+					before { visit users_path }
+					it { should have_title('Acceder') }
 				end
 			end
 		end

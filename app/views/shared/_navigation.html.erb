@@ -1,5 +1,6 @@
 	<% if signed_in? %>
 	Navega a...
+	<%= link_to "Usuarios", users_path %>
 	<%= link_to "Mi Perfil", current_user %>
 	<%= link_to "Editar Perfil", edit_user_path(current_user) %>
 	<%= link_to "Desconectar", signout_path, method: "delete" %>
