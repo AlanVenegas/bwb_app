@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<% if signed_in? %>
-	Navega a...
-	<%= link_to "Mi Perfil", current_user %>
-	<%= link_to "Desconectar", signout_path, method: "delete" %>
-	<% else %>
-	Navega a...
-	<%= link_to "Acceder", signin_path %>
-	<% end %>
+	<%= render 'shared/navigation' %>
+
 	<title><%=yield(:title)%></title>
 	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
