@@ -1,11 +1,29 @@
-	<% if signed_in? %>
-	Navega a...
-	<%= link_to "Usuarios", users_path %>
-	<%= link_to "Mi Perfil", current_user %>
-	<%= link_to "Editar Perfil", edit_user_path(current_user) %>
-	<%= link_to "Desconectar", signout_path, method: "delete" %>
-	<% else %>
-	Navega a...
-	<%= link_to "Acceder", signin_path %>
-	<% end %>
-<br>
+<div class="navbar navbar-inverse">
+	<div class="navbar-inner">
+		<div class="container">
+			<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+
+			<%= link_to "Berlin - Wie Bitte?", root_path, class: "brand" %>
+			<div class="nav-collapse collapse">
+
+				<ul class="nav">
+					<% if signed_in? %>
+					<li><%= link_to "Usuarios", users_path %></li>
+					<li><%= link_to current_user.name, current_user %></li>
+					<li><%= link_to "Editar Perfil", edit_user_path(current_user) %></li>
+					<li><%= link_to "Desconectar", signout_path, method: "delete" %></li>
+					<% else %>
+					<li><%= link_to "Acceder", signin_path %></li>
+					<% end %>
+
+				</ul>
+			</div>
+		</div>
+
+	</div>
+</div>

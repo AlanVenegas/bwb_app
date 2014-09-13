@@ -1,5 +1,5 @@
 <% provide(:title, @user.name)%>
-<%= @user.name %>, <%= @user.email %>
+<h1><%= @user.name %> </h1>
 
 <% if @user.questions.any? %>
 <h3>Preguntas (<%= @user.questions.count %>)</h3>
