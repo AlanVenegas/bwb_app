@@ -3,10 +3,11 @@ require 'spec_helper'
 describe Question do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @question = user.questions.build(content: "Lorem ipsum") }
+  before { @question = user.questions.build(title: "Lorem ipsum", content: "Lorem ipsum") }
 
   subject { @question }
 
+  it { should respond_to(:title) }
   it { should respond_to(:content) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
@@ -19,6 +20,15 @@ describe Question do
     it { should_not be_valid }
   end
 
+  describe "with blank title" do
+    before { @question.title = " " }
+    it { should_not be_valid }
+  end
+
+  describe "with long title" do
+    before { @question.title = "a"*141 }
+    it { should_not be_valid }
+  end
   describe "with blank content" do
     before { @question.content = " " }
     it { should_not be_valid }

@@ -9,6 +9,7 @@ FactoryGirl.define do
 		end
 	end
 	factory :question do
+		title "Lorem ipsum"
     content "Lorem ipsum"
     user
   end

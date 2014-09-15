@@ -33,7 +33,7 @@ describe "Authentication" do
 
 			it { should have_title(user.name) }
 			it { should have_link("Usuarios", 			href: users_path) }
-			it { should have_link("Mi Perfil",     	href: user_path(user)) }
+			it { should have_link(user.name,	     	href: user_path(user)) }
 			it { should have_link("Editar Perfil",  href: edit_user_path(user)) }
 			it { should have_link("Desconectar",    href: signout_path) }
 			it { should_not have_link('Acceder',	  href: signin_path) }
