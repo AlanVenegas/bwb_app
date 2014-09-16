@@ -13,5 +13,10 @@ FactoryGirl.define do
     content "Lorem ipsum"
     user
   end
+  factory :answer do
+  	content "En respuesta a tu Lorem ipsum..."
+  	question
+  	user
+  end
 
 end
