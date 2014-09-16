@@ -1,0 +1,6 @@
+<% provide(:title, @question.title)%>
+<h1><%= @question.title %> </h1>
+
+
+<%= @question.content %><br>
+<%= time_ago_in_words(@question.created_at) %> ago.

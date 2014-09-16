@@ -1,6 +1,2 @@
-<li>
-  <span class="content"><%= question.title %></span>
-  <span class="timestamp">
-    Preguntado hace... <%= time_ago_in_words(question.created_at) %> ago.
-  </span>
-</li>
+<%= link_to question.title, question_path(question) %>
+Preguntado hace... <%= time_ago_in_words(question.created_at) %> ago.<br>
